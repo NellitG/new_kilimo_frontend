@@ -1,4 +1,4 @@
-export default function Hero({ onSignIn }) {
+export default function Hero({ onSignIn, onSignUp }) {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero-copy">
@@ -7,7 +7,7 @@ export default function Hero({ onSignIn }) {
         <h1 id="hero-title">Knowledge that<br />grows <em>with you.</em></h1>
         <p className="hero-intro">Connecting agricultural research, practical advice and digital services to support a more productive, resilient food system.</p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#services">Explore services <span aria-hidden="true">&rarr;</span></a><button className="button button-text" onClick={onSignIn}>Sign in to your account <span aria-hidden="true">&#8599;</span></button></div>
+          <a className="button button-primary" href="#services">Explore services <span aria-hidden="true">&rarr;</span></a><button className="button button-text" onClick={onSignIn}>Sign in to your account <span aria-hidden="true">&#8599;</span></button><button className="button button-text" onClick={onSignUp}>Create an account <span aria-hidden="true">&#8599;</span></button></div>
         <div className="hero-note">
           <span className="note-dot" />
           <span>Built around Kenya&apos;s agricultural knowledge and innovation ecosystem</span></div>
