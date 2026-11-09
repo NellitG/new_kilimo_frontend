@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Brand from './Brand.jsx';
 import Icon from './Icon.jsx';
 
-export default function Header({ onSignIn, onSearch }) {
+export default function Header({ onSignIn, onSignUp, onSearch }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState('home');
   const closeMenu = (section) => { setActive(section); setMenuOpen(false); };
@@ -17,6 +17,7 @@ export default function Header({ onSignIn, onSearch }) {
         <a className={`nav-link${active === 'about' ? ' active' : ''}`} href="#about" onClick={() => closeMenu('about')}>About</a>
         <button className="search-trigger" onClick={onSearch}><Icon name="search"/><span>Search</span><kbd>/</kbd></button>
         <button className="button button-small button-outline" onClick={onSignIn}>Sign in <span aria-hidden="true">&#8599;</span></button>
+        <button className="button button-small button-primary" onClick={onSignUp}>Sign up</button>
       </nav>
     </header>
   );
