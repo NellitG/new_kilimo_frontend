@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ClosingBanner from './components/ClosingBanner.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
@@ -7,11 +7,15 @@ import IntroStrip from './components/IntroStrip.jsx';
 import SearchDialog from './components/SearchDialog.jsx';
 import Services from './components/Services.jsx';
 import SignInDialog from './components/SignInDialog.jsx';
+import SignUpDialog from './components/SignUpDialog.jsx';
 
 export default function App() {
   const loginRef = useRef(null);
+  const signupRef = useRef(null);
+  const [signupOpen, setSignupOpen] = useState(false);
   const searchRef = useRef(null);
   const openLogin = () => loginRef.current?.showModal();
+  const openSignup = () => setSignupOpen(true);
   const openSearch = () => searchRef.current?.showModal();
 
   useEffect(() => {
@@ -28,15 +32,16 @@ export default function App() {
 
   return (
     <>
-      <Header onSignIn={openLogin} onSearch={openSearch}/>
+      <Header onSignIn={openLogin} onSignUp={openSignup} onSearch={openSearch}/>
       <main id="home">
-        <Hero onSignIn={openLogin}/>
+        <Hero onSignIn={openLogin} onSignUp={openSignup}/>
         <IntroStrip/>
         <Services/>
-        <ClosingBanner onSignIn={openLogin}/>
+        <ClosingBanner onSignIn={openSignup}/>
       </main>
       <Footer/>
       <SignInDialog dialogRef={loginRef}/>
+      <SignUpDialog open={signupOpen} onClose={() => setSignupOpen(false)} onSignIn={() => { setSignupOpen(false); openLogin(); }}/>
       <SearchDialog dialogRef={searchRef}/>
     </>
   );
