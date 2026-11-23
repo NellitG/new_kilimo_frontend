@@ -6,7 +6,7 @@ export default function ServiceCard({ service, onDiscover }) {
       <div className="service-icon"><Icon name={service.icon}/></div>
       <h3>{service.title}</h3>
       <p>{service.description}</p>
-      {service.title === 'Agricultural Advisory' ? <button className="card-link" type="button" onClick={onDiscover}>Discover service <span aria-hidden="true">&rarr;</span></button> : <a className="card-link" href="#about">Discover service <span aria-hidden="true">&rarr;</span></a>}
+      {['Agricultural Advisory', 'OAN Network', 'Data Exchange', 'Knowledge & Resources', 'Farmer & Organization Services'].includes(service.title) ? <button className="card-link" type="button" onClick={onDiscover}>{service.title === 'Agricultural Advisory' ? 'Discover service' : 'Open service'} <span aria-hidden="true">&rarr;</span></button> : <a className="card-link" href="#about">Discover service <span aria-hidden="true">&rarr;</span></a>}
     </article>
   );
 }
